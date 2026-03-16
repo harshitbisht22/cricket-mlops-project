@@ -1,40 +1,67 @@
-🏏 IPL Score Predictor (MLOps)
+# 🏏 IPL Score Predictor (MLOps Project)
 
-This is an end-to-end Machine Learning project that predicts the first-innings score of an IPL match based on real-time match data. The project is production-ready, served via FastAPI, and fully Dockerized.
+An **end-to-end Machine Learning + MLOps project** that predicts the **first-innings score of an IPL match** using real-time match data.
 
-🚀 Project Overview
+The model is exposed via a **FastAPI REST API**, containerized with **Docker**, and prepared for **Kubernetes deployment**.
 
-Model: Random Forest Regressor trained on historical IPL ball-by-ball data.
+---
 
-API Framework: FastAPI (with automated Swagger documentation).
+# 🚀 Project Overview
 
-Containerization: Docker (Python 3.12-slim base image).
+This project demonstrates how to take a Machine Learning model from **training → API → container → production-ready deployment**.
 
-Deployment Ready: Manifests included for Kubernetes orchestration.
+### 🔹 Model
+- **Algorithm:** Random Forest Regressor
+- **Training Data:** Historical IPL ball-by-ball dataset
+- **Output:** Predicted first innings score
 
-🛠️ How to Run Locally
-1. Using Docker (Recommended)
-You can pull the pre-built image directly from Docker Hub:
+### 🔹 API Layer
+- **Framework:** FastAPI
+- **Features**
+  - High performance async API
+  - Automatic Swagger documentation
+  - Input validation using Pydantic
 
-Bash
+### 🔹 Containerization
+- **Docker**
+- **Base Image:** `python:3.12-slim`
+
+### 🔹 Deployment Ready
+- Kubernetes manifests can be added to deploy the service on a cluster.
+
+---
+
+# 🛠️ Running the Project
+
+## 1️⃣ Run Using Docker (Recommended)
+
+Pull the image from Docker Hub and run the container.
+
+```bash
 docker pull harshitbisht/cricket-predictor:latest
-docker run -p 8000:8000 harshitbisht/cricket-predictor:latest
-2. Manual Setup
-Bash
-# Install dependencies
-pip install -r requirements.txt
 
-# Run the API
+docker run -p 8000:8000 harshitbisht/cricket-predictor:latest
+
+The API will start at:
+
+http://localhost:8000
+2️⃣ Run Manually (Without Docker)
+Install dependencies
+pip install -r requirements.txt
+Run the FastAPI server
 uvicorn main:app --host 0.0.0.0 --port 8000
 📊 API Documentation
-Once the server is running, visit:
 
-Interactive Docs: http://localhost:8000/docs
+Once the server is running, you can access the API documentation:
 
-JSON Schema: http://localhost:8000/redoc
+Swagger UI
+http://localhost:8000/docs
+ReDoc Documentation
+http://localhost:8000/redoc
+📥 Sample Prediction Request
 
-Sample Request (JSON)
-JSON
+Example JSON request:
+
 {
   "batting_team": "Royal Challengers Bangalore",
   "bowling_team": "Kolkata Knight Riders",
@@ -42,11 +69,55 @@ JSON
   "current_score": 145,
   "wickets_fallen": 3
 }
+
+The API will return the predicted final score for the first innings.
+
 📁 Project Structure
-main.py: The FastAPI application.
+.
+├── main.py              # FastAPI application
+├── pipe.pkl             # Serialized ML pipeline (model + preprocessing)
+├── requirements.txt     # Python dependencies
+├── Dockerfile           # Docker container configuration
+├── .gitignore           # Ignore unnecessary files
+└── README.md            # Project documentation
+🧠 Tech Stack
 
-pipe.pkl: The serialized ML pipeline (Model + Preprocessor).
+Python
 
-Dockerfile: Instructions for containerizing the app.
+Scikit-learn
 
-.gitignore: Prevents heavy data files and venv from being uploaded.
+FastAPI
+
+Docker
+
+Kubernetes (for deployment)
+
+📦 Docker Image
+
+Available on Docker Hub:
+
+harshitbisht/cricket-predictor
+
+Pull command:
+
+docker pull harshitbisht/cricket-predictor:latest
+🔮 Future Improvements
+
+Add CI/CD pipeline (GitHub Actions)
+
+Deploy on Kubernetes (EKS / Minikube)
+
+Add Prometheus + Grafana monitoring
+
+Add ML model versioning
+
+Integrate MLflow for experiment tracking
+
+👨‍💻 Author
+
+Harshit Bisht
+
+DevOps | Cloud | Kubernetes | MLOps
+
+LinkedIn:
+https://www.linkedin.com/in/harshit-bisht-0a0a69148/
