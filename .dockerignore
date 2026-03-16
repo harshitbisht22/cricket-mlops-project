@@ -1,0 +1,6 @@
+venv/
+__pycache__/
+.git/
+.env
+*.ipynb
+data/ipl_ball_by_ball.csv
