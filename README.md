@@ -1,7 +1,9 @@
 🏏 IPL Score Predictor (MLOps)
+
 This is an end-to-end Machine Learning project that predicts the first-innings score of an IPL match based on real-time match data. The project is production-ready, served via FastAPI, and fully Dockerized.
 
 🚀 Project Overview
+
 Model: Random Forest Regressor trained on historical IPL ball-by-ball data.
 
 API Framework: FastAPI (with automated Swagger documentation).
